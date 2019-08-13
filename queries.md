@@ -2,7 +2,7 @@
 
 ### Display the ProductName and CategoryName for all products in the database. Shows 76 records.
 
-```  sql
+``` sql
 SELECT p.ProductName, c.CategoryName
 FROM [Products] AS P
 JOIN [Categories] AS C
@@ -15,7 +15,7 @@ SELECT O.OrderID, S.ShipperName
 FROM [Orders] AS O
 JOIN [Shippers] AS S
 ON O.ShipperID = S.ShipperID
-WHERE O.OrderDate < '1997-01-09'
+WHERE O.OrderDate < '1997-01-09';
 ```
 
 ### Display all ProductNames and Quantities placed on order 10251. Sort by ProductName. Shows 3 records.
