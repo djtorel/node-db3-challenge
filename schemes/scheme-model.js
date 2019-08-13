@@ -25,9 +25,21 @@ const add = async scheme => {
   }
 };
 
+const update = async (changes, id) => {
+  try {
+    const updateCount = await db('schemes')
+      .update(changes)
+      .where({ id });
+    return updateCount ? await findById(id) : null;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
+  update,
 };
