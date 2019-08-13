@@ -9,7 +9,8 @@ module.exports = {
       .where({ id })
       .first(),
   findSteps: scheme_id =>
-    db('steps')
-      .where({ scheme_id })
-      .orderBy('step_number', 'asc'),
+    db('steps as st')
+      .join('schemes as sc', 'sc.id', 'st.scheme_id')
+      .select('st.id', 'sc.scheme_name', 'st.step_number', 'st.instructions')
+      .where({ scheme_id }),
 };
