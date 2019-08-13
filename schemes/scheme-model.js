@@ -36,10 +36,23 @@ const update = async (changes, id) => {
   }
 };
 
+const remove = async id => {
+  try {
+    const deletedPost = await findById(id);
+    const delCount = await db('schemes')
+      .where({ id })
+      .del();
+    return delCount ? deletedPost : null;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
   update,
+  remove,
 };
