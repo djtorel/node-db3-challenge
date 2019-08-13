@@ -8,4 +8,8 @@ module.exports = {
     db('schemes')
       .where({ id })
       .first(),
+  findSteps: scheme_id =>
+    db('steps')
+      .where({ scheme_id })
+      .orderBy('step_number', 'asc'),
 };
